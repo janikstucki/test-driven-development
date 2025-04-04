@@ -1,19 +1,31 @@
 export function formatDuration(seconds: number): string {
-  let hour:number = Math.round(seconds / 3600)
-  let minute:number = Math.round(seconds / 60)
-  let second:number = Math.round(seconds % 60)
-
-  if (minute => 60)
-  {
-    minute = minute - 60
-    hour = hour + 1
+  if (seconds < 0) {
+    throw new Error("Kann nicht negativ sein!");
   }
-
-    return hour + "h" + minute + "m" + second + "s";
-
-
-
-
-  // console.log(seconds);
-  // throw new Error("not implemented yet");
+  let result = "";
+  let hours = Math.floor(seconds / 3600);
+  seconds %= 3600;
+  let minutes = Math.floor(seconds / 60);
+  seconds = Math.round(seconds % 60);
+ 
+  if (seconds >= 60)
+  {
+    seconds = 0;
+    minutes += 1;
+  }
+ 
+  if (minutes >= 60) {
+    minutes = 0;
+    hours += 1;}
+ 
+  
+  if (hours > 0) {
+    result += hours + "h";
+  }
+  if (minutes > 0 || hours > 0) {
+    result += minutes + "m";
+  }
+  result += seconds + "s";
+ 
+  return result;
 }
