@@ -1,10 +1,18 @@
 export function play(player1: string, player2: string): number {
-
+  
   player1 = player1.trim()
   player1 = player1.toLowerCase()
 
   player2 = player2.trim()
   player2 = player2.toLowerCase()
+
+
+  if (player1 != "rock" && player1 != "paper" && player1 != "scissors" ||
+    player2 != "rock" && player2 != "paper" && player2 != "scissors") {
+  throw new Error("Falsche Eingabe");
+}
+
+
 
   let result: number;
   if (player1 == player2)
@@ -22,7 +30,7 @@ export function play(player1: string, player2: string): number {
 
   else if (player2 === "scissors" && player1 === "paper") {
     result = 2;
-  } else if (player2 === "rock" && player1 === "scissors") {
+  } else if(player2 === "rock" && player1 === "scissors") {
     result = 2;
   } else if (player2 === "paper" && player1 === "rock") {
     result = 2;

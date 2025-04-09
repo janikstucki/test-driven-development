@@ -9,5 +9,5 @@ test("Sieg für Spieler 1", () => {
 });
 
 test("Sieg für Spieler 2", () => {
-    expect(play("rock", "Paper")).toBe(2);
+    expect(play("    RoCK  ", "Paper")).toBe(2);
 });
